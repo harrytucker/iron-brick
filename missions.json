@@ -1,0 +1,127 @@
+[
+   {
+      "title":"M01 - Elevated Places",
+      "sections":[
+         {
+            "type":"CheckboxField",
+            "string":"The Robot needs to be Supported by the bridge:",
+            "value":"20"
+         },
+         {
+            "type":"RadioField",
+            "string":"Flag points only available if bridge portion is successful!",
+            "choices":[
+               {
+                  "string":"No flags raised",
+                  "value":"0"
+               },
+               {
+                  "string":"1 Flag Raised",
+                  "value":"15"
+               },
+               {
+                  "string":"2 Flags Raised",
+                  "value":"30"
+               }
+            ]
+         },
+         {
+            "type":"StringField",
+            "string":"It is okay and expected for Robots to collide while trying to earn Flag points. When clearly only one robot holds a raised flag, only that Robot scores for that flag."
+         }
+      ]
+   },
+   {
+      "title":"M02 - Crane (score all that apply)",
+      "sections":[
+         {
+            "type":"StringField",
+            "string":"If the Hooked Blue Unit is:"
+         },
+         {
+            "type":"CheckboxField",
+            "string":"Clearly lowered any distance from the Guide Hole",
+            "value":"20"
+         },
+         {
+            "type":"CheckboxField",
+            "string":"Independent and Supported by another Blue Unit",
+            "value":"15"
+         },
+         {
+            "type":"CheckboxField",
+            "string":"and Level 1 is completely in the Blue Circle",
+            "value":"15"
+         }
+      ]
+   },
+   {
+      "title":"M05 - Treehouse (score all that apply)",
+      "sections":[
+         {
+            "type":"StringField",
+            "string":"If a Unit is Independent and Supported by the Trees:"
+         },
+         {
+            "type":"SelectField",
+            "string":"Units supported by large branches",
+            "choices":[
+               {
+                  "string":"0",
+                  "value":"0"
+               },
+               {
+                  "string":"1",
+                  "value":"10"
+               },
+               {
+                  "string":"2",
+                  "value":"20"
+               },
+               {
+                  "string":"3",
+                  "value":"30"
+               },
+               {
+                  "string":"4",
+                  "value":"40"
+               },
+               {
+                  "string":"5",
+                  "value":"50"
+               }
+            ]
+         },
+         {
+            "type":"SelectField",
+            "string":"Units supported by small branches",
+            "choices":[
+               {
+                  "string":"0",
+                  "value":"0"
+               },
+               {
+                  "string":"1",
+                  "value":"15"
+               },
+               {
+                  "string":"2",
+                  "value":"30"
+               },
+               {
+                  "string":"3",
+                  "value":"45"
+               },
+               {
+                  "string":"4",
+                  "value":"60"
+               },
+               {
+                  "string":"5",
+                  "value":"75"
+               }
+            ]
+         }
+      ]
+   }
+]
