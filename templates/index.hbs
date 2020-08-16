@@ -1,31 +1,43 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Iron Brick Scoreboard</title>
-  </head>
-  <body>
-      {{#each missions }}
-          <form>
-          <h2>{{this.title}}</h2>
-          {{#each fields}}
-              {{#if CheckboxField}}
-                  <input type="checkbox" name="{{CheckboxField.text}}" value={{CheckboxField.value}}>
-                  <label>{{CheckboxField.text}}</label>
-              {{/if}}
+    <head>
+        <title>Iron Brick Scoreboard</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                {{#each missions }}
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>{{this.title}}</h2>
+                            {{#each fields}}
+                                {{#if CheckboxField}}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="{{CheckboxField.text}}" value={{CheckboxField.value}}>
+                                        <label>{{CheckboxField.text}}</label>
+                                    </div>
+                                {{/if}}
 
-              {{#if RadioField}}
-                  <p>{{RadioField.text}}</p>
-                  {{#each RadioField.choices}}
-                      <input type="radio" name="{{../RadioField.text}}" value={{this.value}}>
-                      <label>{{this.text}}</label></br>
-                  {{/each}}
-              {{/if}}
+                                {{#if RadioField}}
+                                    <p>{{RadioField.text}}</p>
+                                    <div class="form-check">
+                                        {{#each RadioField.choices}}
+                                            <input class="form-check-input" type="radio" name="{{../RadioField.text}}" value={{this.value}}>
+                                            <label>{{this.text}}</label></br>
+                                        {{/each}}
+                                    </div>
+                                {{/if}}
 
-              {{#if StringField}}
-                  <p>{{StringField}}</p>
-              {{/if}}
-          {{/each}}
-          </form>
-      {{/each}}
-  </body>
+                                {{#if StringField}}
+                                    <p>{{StringField}}</p>
+                                {{/if}}
+                            {{/each}}
+                        </div>
+                    </div>
+                {{/each}}
+            </form>
+        </div>
+    </body>
 </html>
