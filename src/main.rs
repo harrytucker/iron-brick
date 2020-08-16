@@ -6,13 +6,13 @@ extern crate rocket;
 extern crate serde;
 extern crate serde_json;
 
-use rocket_contrib::json::Json;
+use rocket_contrib::{json::Json, templates::Template};
 
 mod form;
 use form::models::*;
 
-#[get("/")]
-fn index() -> Json<MissionForm> {
+#[get("/example")]
+fn mission_example() -> Json<MissionForm> {
     let mission = Mission {
         title: String::from("M01 - Elevated Places"),
         fields: vec![
@@ -48,6 +48,49 @@ fn index() -> Json<MissionForm> {
     })
 }
 
+#[get("/")]
+fn index() -> Template {
+    let mission = Mission {
+        title: String::from("M01 - Elevated Places"),
+        fields: vec![
+            Field::CheckboxField(Checkbox {
+                text: String::from("The Robot needs to be supported by the bridge:"),
+                value: 20,
+            }),
+            Field::RadioField(Radio {
+                text: String::from(
+                    "Flag point only available if the bridge portion is successful!",
+                ),
+                choices: vec![
+                    Choice {
+                        text: String::from("No flags raised"),
+                        value: 0,
+                    },
+                    Choice {
+                        text: String::from("1 flag raised"),
+                        value: 15,
+                    },
+                    Choice {
+                        text: String::from("2 flags raised"),
+                        value: 30,
+                    },
+                ],
+            }),
+            Field::StringField(String::from("It is okay and expected for Robots to collide while trying to earn flag points. When clearly only one robot holds a raised flag, only that Robot scores for that flag."))
+        ],
+    };
+
+    let context = MissionForm {
+        missions: vec![mission],
+    };
+
+    Template::render("index", &context)
+}
+
 fn main() {
-    rocket::ignite().mount("/", routes![index]).launch();
+    rocket::ignite()
+        .mount("/api", routes![mission_example])
+        .mount("/", routes![index])
+        .attach(Template::fairing())
+        .launch();
 }

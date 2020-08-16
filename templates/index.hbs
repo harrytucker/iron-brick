@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Iron Brick Scoreboard</title>
+  </head>
+  <body>
+      {{#each missions }}
+          <form>
+          <h2>{{this.title}}</h2>
+          {{#each fields}}
+              {{#if CheckboxField}}
+                  <input type="checkbox" name="{{CheckboxField.text}}" value={{CheckboxField.value}}>
+                  <label>{{CheckboxField.text}}</label>
+              {{/if}}
+             
+              {{#if RadioField}}
+                  <p>{{RadioField.text}}</p>
+                  {{#each RadioField.choices}}
+                      <input type="radio" name="{{RadioField.text}}" value={{this.value}}>
+                      <label>{{this.text}}</label></br>
+                  {{/each}}
+              {{/if}}
+
+              {{#if StringField}}
+                  <p>{{StringField}}</p>
+              {{/if}}
+          {{/each}}
+          </form>
+      {{/each}}
+  </body>
+</html>
