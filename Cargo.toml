@@ -1,2 +1,2 @@
 [workspace]
-members = ["web", "cli", "missions_lib"]
+members = ["web", "cli", "lib"]

@@ -1,5 +1,5 @@
-use missions_lib;
-use missions_lib::*;
+use lib;
+use lib::*;
 
 use quicli::prelude::*;
 use structopt::StructOpt;

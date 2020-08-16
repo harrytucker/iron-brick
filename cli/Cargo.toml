@@ -10,5 +10,5 @@ edition = "2018"
 quicli = "0.4"
 structopt = "0.2"
 
-[dependencies.missions_lib]
-path = "../missions_lib"
+[dependencies.lib]
+path = "../lib"

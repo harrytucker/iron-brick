@@ -8,7 +8,7 @@ extern crate rocket;
 
 use rocket_contrib::{json::Json, templates::Template};
 
-use missions_lib::models::*;
+use lib::models::*;
 
 #[get("/example")]
 fn mission_example() -> Json<MissionForm> {
