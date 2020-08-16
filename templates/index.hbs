@@ -16,7 +16,7 @@
               {{#if RadioField}}
                   <p>{{RadioField.text}}</p>
                   {{#each RadioField.choices}}
-                      <input type="radio" name="{{RadioField.text}}" value={{this.value}}>
+                      <input type="radio" name="{{../RadioField.text}}" value={{this.value}}>
                       <label>{{this.text}}</label></br>
                   {{/each}}
               {{/if}}
