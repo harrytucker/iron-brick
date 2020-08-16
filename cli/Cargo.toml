@@ -1,0 +1,14 @@
+[package]
+name = "cli"
+version = "0.1.0"
+authors = ["Harry Tucker <harrytuckerubuntu@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+quicli = "0.4"
+structopt = "0.2"
+
+[dependencies.missions_lib]
+path = "../missions_lib"

@@ -3,13 +3,12 @@
 #[macro_use]
 extern crate rocket;
 
-extern crate serde;
-extern crate serde_json;
+// extern crate serde;
+// extern crate serde_json;
 
 use rocket_contrib::{json::Json, templates::Template};
 
-mod form;
-use form::models::*;
+use missions_lib::models::*;
 
 #[get("/example")]
 fn mission_example() -> Json<MissionForm> {

@@ -1,0 +1,37 @@
+{
+  "missions": [
+    {
+      "title": "M01 - Elevated Places",
+      "fields": [
+        {
+          "CheckboxField": {
+            "text": "The Robot needs to be supported by the bridge:",
+            "value": 20
+          }
+        },
+        {
+          "RadioField": {
+            "text": "Flag point only available if the bridge portion is successful!",
+            "choices": [
+              {
+                "text": "No flags raised",
+                "value": 0
+              },
+              {
+                "text": "1 flag raised",
+                "value": 15
+              },
+              {
+                "text": "2 flags raised",
+                "value": 30
+              }
+            ]
+          }
+        },
+        {
+          "StringField": "It is okay and expected for Robots to collide while trying to earn flag points. When clearly only one robot holds a raised flag, only that Robot scores for that flag."
+        }
+      ]
+    }
+  ]
+}

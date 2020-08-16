@@ -1,5 +1,5 @@
 [package]
-name = "iron-brick"
+name = "web"
 version = "0.1.0"
 authors = ["Harry Tucker <harrytuckerubuntu@gmail.com>"]
 edition = "2018"
@@ -15,12 +15,4 @@ default-features = false
 features = ["json", "handlebars_templates"]
 
 [dependencies.missions_lib]
-path = "missions_lib"
-
-[[bin]]
-name = "brick-web"
-path = "web/src/main.rs"
-
-[[bin]]
-name = "brick"
-path = "cli/src/main.rs"
+path = "../missions_lib"
