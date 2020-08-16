@@ -1,26 +1,2 @@
-[package]
-name = "iron-brick"
-version = "0.1.0"
-authors = ["Harry Tucker <harrytuckerubuntu@gmail.com>"]
-edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-rocket = "0.4.5"
-
-[dependencies.rocket_contrib]
-version = "0.4.5"
-default-features = false
-features = ["json", "handlebars_templates"]
-
-[dependencies.missions_lib]
-path = "missions_lib"
-
-[[bin]]
-name = "brick-web"
-path = "web/src/main.rs"
-
-[[bin]]
-name = "brick"
-path = "cli/src/main.rs"
+[workspace]
+members = ["web", "cli", "missions_lib"]
