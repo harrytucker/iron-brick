@@ -1,0 +1,24 @@
+#+TITLE: Iron Brick - Lego Tournament Scoreboard
+#+AUTHOR: Harry Tucker
+
+* About
+Iron Brick is a re-write of the [[https://github.com/harrytucker/lego-scoreboard/][lego-scoreboard]] Flask application using the [[https://www.rust-lang.org/][Rust programming language]]. This is a learning exercise for myself, and an attempt to improve on the previous version of this application, where Rust's typesystem and other features can be exploited to make a robust application.
+
+* Some Technical Details
++ [[https://rocket.rs][Rocket]] provides the web layer of things
++ [[https://serde.rs/][Serde]] is a very powerful serialisation framework that is used to handle missions like the previous application
+
+* Requirements
+Rocket 0.4.5 still doesn't compile on stable Rust just yet, so make sure you're running nightly:
+#+BEGIN_SRC bash
+rustup toolchain install nightly
+#+END_SRC
+Then simply compile the dependencies from `Cargo.toml` as normal:
+#+BEGIN_SRC bash
+cargo build
+#+END_SRC
+
+* In Progress [0%]
+** TODO Implement Web Interface
+** TODO Implement CLI for management
+** TODO Import and export of JSON/YAML
