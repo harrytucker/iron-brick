@@ -1,5 +1,5 @@
 [package]
-name = "web"
+name = "iron-brick"
 version = "0.1.0"
 authors = ["Harry Tucker <harrytuckerubuntu@gmail.com>"]
 edition = "2018"
