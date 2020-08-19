@@ -49,7 +49,6 @@ fn mission_example() -> Json<MissionForm> {
 #[get("/")]
 fn index(missions: State<MissionForm>) -> Template {
     let context = missions.inner();
-
     Template::render("index", &context)
 }
 
