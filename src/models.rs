@@ -37,9 +37,13 @@ pub enum Field {
 pub struct Checkbox {
     pub text: String,
     pub value: i32,
+
+    #[serde(default)]
+    pub complete: bool,
 }
 
 /// SelectField: a drop-down with a text description
+/// For completion status, find the choice marked `complete`
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Select {
     pub text: String,
@@ -58,4 +62,7 @@ pub struct Radio {
 pub struct Choice {
     pub text: String,
     pub value: i32,
+
+    #[serde(default)]
+    pub complete: bool,
 }
