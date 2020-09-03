@@ -9,10 +9,21 @@ use lib::models::*;
 use quicli::prelude::*;
 use rocket::State;
 
+#[derive(Serialize)]
+struct TemplateContext<'context> {
+    parent: &'static str,
+    missions: &'context MissionForm,
+}
+
 #[get("/")]
 fn index(missions: State<MissionForm>) -> Template {
-    let context = missions.inner();
-    Template::render("index", &context)
+    Template::render(
+        "index",
+        &TemplateContext {
+            parent: "layout",
+            missions: &missions,
+        },
+    )
 }
 
 fn main() {
