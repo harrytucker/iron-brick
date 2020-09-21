@@ -8,6 +8,7 @@ edition = "2018"
 
 [dependencies]
 rocket = "0.4.5"
+rocket-include-static-resources = "0.9.5"
 quicli = "0.4"
 structopt = "0.2"
 

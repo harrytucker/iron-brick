@@ -19,6 +19,6 @@ cargo build
 #+END_SRC
 
 * In Progress [0%]
-** TODO Implement Web Interface
+** STRT Implement Web Interface
 ** TODO Implement CLI for management
 ** TODO Import and export of JSON/YAML

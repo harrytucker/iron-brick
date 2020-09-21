@@ -3,7 +3,11 @@
 #[macro_use]
 extern crate rocket;
 
+#[macro_use]
+extern crate rocket_include_static_resources;
+
 use rocket_contrib::{json::Json, templates::Template};
+use rocket_include_static_resources::StaticResponse;
 
 use lib::models::*;
 use quicli::prelude::*;
@@ -13,6 +17,11 @@ use rocket::State;
 struct TemplateContext<'context> {
     parent: &'static str,
     missions: &'context MissionForm,
+}
+
+#[get("/favicon.ico")]
+fn favicon() -> StaticResponse {
+    static_response!("favicon")
 }
 
 #[get("/")]
@@ -31,8 +40,11 @@ fn main() {
     let missions_str = lib::yaml_to_missions(&content).unwrap();
 
     rocket::ignite()
-        .mount("/", routes![index])
+        .mount("/", routes![index, favicon])
         .attach(Template::fairing())
+        .attach(StaticResponse::fairing(|resources| {
+            static_resources_initialize!(resources, "favicon", "static/lego-brick.png");
+        }))
         .manage(missions_str)
         .launch();
 }

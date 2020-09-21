@@ -5,7 +5,7 @@
         {{! do we really need this to be doubly nested?, seems over the top...}}
         {{#with this.missions}}
             {{#each this.missions }}
-                <h2>{{this.title}}</h2>
+                <h1>{{this.title}}</h1>
                 {{#each fields}}
                     {{#if CheckboxField}}
                         <div class="form-check">
@@ -30,17 +30,6 @@
         {{/with}}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <h1>
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et mauris tempor, scelerisque mauris ut, consectetur velit. Donec porttitor odio sit amet fermentum malesuada. Integer eleifend sit amet ex id ullamcorper. Sed fringilla odio vitae arcu dapibus tincidunt. Integer purus lectus, mollis ac fermentum nec, iaculis a dolor. Vestibulum ut est massa. Nunc eget elit diam. Nunc in scelerisque quam. Sed eu efficitur neque. Quisque fringilla ex sit amet nisl porttitor venenatis. Nullam rutrum a enim sed egestas. Integer sapien augue, molestie lacinia rutrum a, pharetra ac nunc. Integer suscipit leo vitae ligula imperdiet cursus.
-
-        Sed feugiat enim nec tristique porttitor. Praesent ornare a nisl a vulputate. Aenean sollicitudin tortor ac leo luctus porttitor. Sed ornare nisi non sem elementum, et vulputate mi rhoncus. Nam in metus a magna bibendum efficitur at vitae ligula. Aenean in mollis justo, sed eleifend massa. Aliquam erat volutpat. Nulla tincidunt consectetur velit imperdiet sodales.
-
-        Cras at urna quis nunc consectetur feugiat. Nulla consectetur, sem non aliquet mattis, ligula velit scelerisque ex, sed vehicula ipsum leo sit amet tortor. Nulla facilisis est nec enim aliquet, sed convallis justo euismod. Aenean lacinia eu lectus vel vestibulum. Cras iaculis sodales justo in malesuada. Etiam lacus nunc, rhoncus ut bibendum non, posuere a ipsum. Etiam neque nunc, tristique ut ullamcorper et, varius quis risus. Vivamus vel diam justo. Fusce non malesuada nibh. Vivamus cursus dui metus, vel auctor sem aliquam et. Integer sed nisi sit amet nunc elementum vestibulum quis vel leo. Suspendisse vitae ex et arcu bibendum auctor. Nulla sodales augue eu finibus iaculis.
-
-        Mauris sit amet maximus turpis, sed blandit sapien. Suspendisse eu elit mollis, aliquet neque vel, convallis ex. Aenean gravida, libero eu pharetra scelerisque, lacus est dictum nulla, tristique accumsan nunc erat vel dui. Duis orci nunc, auctor quis dignissim vitae, tristique sed leo. Quisque viverra diam at nunc porta volutpat nec congue purus. Quisque velit nunc, dictum nec facilisis eget, condimentum eu sem. Phasellus eget aliquet ipsum. Integer lobortis metus quis finibus egestas. Vestibulum nulla urna, euismod ac nisl id, euismod commodo lacus. Vivamus vulputate lectus ac ligula aliquam, nec semper velit egestas. Curabitur at leo finibus ligula viverra ultricies a id justo. Nunc blandit tortor a dolor ullamcorper dignissim at eget metus.
-
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras gravida ultricies eleifend. Duis at tellus vel nisi tristique aliquam. Mauris suscipit libero sem, a lacinia sem semper sit amet. Suspendisse quis ex fermentum arcu sollicitudin elementum bibendum sed nisl. Maecenas dignissim, massa quis varius tempus, dolor purus maximus eros, placerat fringilla turpis turpis eget elit. Pellentesque a rhoncus lacus. Nunc auctor velit ut quam molestie, eget accumsan ipsum tincidunt. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur lectus nibh, posuere ut sollicitudin nec, sodales sit amet massa. Mauris id feugiat purus. Vivamus commodo urna lorem, at pulvinar neque auctor sit amet. Aenean vestibulum nisl nec ex interdum pulvinar a vitae leo. Curabitur convallis arcu id felis pretium auctor. Suspendisse sit amet sollicitudin orci, eget mollis urna. </h1>
 </div>
 {{/inline}}
 {{~> (parent)~}}
