@@ -704,6 +704,8 @@ dependencies = [
 name = "iron-brick"
 version = "0.1.0"
 dependencies = [
+ "clap",
+ "failure",
  "quicli",
  "rocket",
  "rocket-include-static-resources",

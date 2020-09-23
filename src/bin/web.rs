@@ -6,7 +6,7 @@ extern crate rocket;
 #[macro_use]
 extern crate rocket_include_static_resources;
 
-use rocket_contrib::{json::Json, templates::Template};
+use rocket_contrib::templates::Template;
 use rocket_include_static_resources::StaticResponse;
 
 use lib::models::*;
