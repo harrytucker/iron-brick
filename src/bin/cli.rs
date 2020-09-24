@@ -5,7 +5,20 @@ use models::MissionForm;
 use quicli::prelude::*;
 use structopt::{clap::arg_enum, StructOpt};
 
+// arg_enum! implements FromStr so we can use this as a CLI argument
+arg_enum! {
+    /// FileFormat represents the file formats the iron-brick cli supports.
+    /// If any new file formats need to be supported, they can be added here.
+    #[derive(PartialEq, Debug)]
+    enum FileFormat {
+        Yaml,
+        Json,
+    }
+}
+
+/// You can define command line arguments here, see StructOpt documentation on how to use this.
 #[derive(Debug, StructOpt)]
+#[structopt(rename_all = "kebab-case")]
 enum Cli {
     Info {
         /// The missions file to load in, supports either JSON or YAML formats
@@ -21,6 +34,7 @@ enum Cli {
         verbosity: Verbosity,
     },
     Help,
+    // Example for when I get to this subcommand
     // Add {
     //     #[structopt(short)]
     //     interactive: bool,
@@ -29,7 +43,8 @@ enum Cli {
     // }
 }
 
-/// Currently parses a YAML mission file into JSON format and prints it out
+/// Main handles command arguments and passesthem to the relevant functions
+/// Currently, only the Info command is supported, and prints the maximum score possible for a set of missions
 fn main() -> Result<(), Error> {
     let args = Cli::from_args();
 
@@ -49,6 +64,7 @@ fn main() -> Result<(), Error> {
     Ok(())
 }
 
+/// Takes a filename and a FileFormat, currently supports YAML and JSON using Serde.
 fn read_missions(
     file: String,
     format: FileFormat,
@@ -69,6 +85,7 @@ fn read_missions(
     Ok(missions)
 }
 
+/// Borrows a MissionForm and returns the maximum possible score for that MissionForm
 fn calculate_max_score(mission_form: &MissionForm) -> i32 {
     let mut max_score = 0;
 
@@ -93,18 +110,3 @@ fn calculate_max_score(mission_form: &MissionForm) -> i32 {
 
     max_score
 }
-
-// arg_enum! implements FromStr so we can use this as a CLI argument
-arg_enum! {
-    #[derive(PartialEq, Debug)]
-    enum FileFormat {
-        Yaml,
-        Json,
-    }
-}
-// fn serialize_missions(format: FileFormat, file: String) -> Option<models::MissionForm> {
-//     match format {
-//         FileFormat::Yaml => Ok(yaml_to_missions(&file).unwrap()),
-//         FileFormat::Json => Ok(json_to_missions(&file).unwrap()),
-//     }
-// }
