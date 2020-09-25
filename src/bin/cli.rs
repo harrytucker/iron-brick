@@ -1,7 +1,10 @@
 use lib::*;
+use models::{
+    Field::{CheckboxField, RadioField, SelectField, StringField},
+    MissionForm,
+};
 
 use failure::Error;
-use models::MissionForm;
 use quicli::prelude::*;
 use structopt::{clap::arg_enum, StructOpt};
 
@@ -92,14 +95,14 @@ fn calculate_max_score(mission_form: &MissionForm) -> i32 {
     for mission in &mission_form.missions {
         for field in &mission.fields {
             match field {
-                models::Field::StringField(_) => { /*do nothing*/ }
-                models::Field::CheckboxField(field) => max_score = max_score + field.value,
-                models::Field::SelectField(field) => {
+                StringField(_) => { /*do nothing*/ }
+                CheckboxField(field) => max_score = max_score + field.value,
+                SelectField(field) => {
                     for selection in &field.choices {
                         max_score = max_score + selection.value;
                     }
                 }
-                models::Field::RadioField(field) => {
+                RadioField(field) => {
                     for selection in &field.choices {
                         max_score = max_score + selection.value;
                     }
