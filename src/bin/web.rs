@@ -6,12 +6,18 @@ extern crate rocket;
 #[macro_use]
 extern crate rocket_include_static_resources;
 
-use rocket_contrib::templates::Template;
+use rocket_contrib::database;
+use rocket_contrib::{databases::diesel, templates::Template};
 use rocket_include_static_resources::StaticResponse;
 
 use lib::models::*;
 use quicli::prelude::*;
 use rocket::State;
+
+/// To configure the database, edit the `global.databases` item in Rocket.toml.
+/// You can find the Rocket documentation for this here: https://rocket.rs/v0.4/guide/state/#databases
+#[database("sqlite")]
+struct DbConn(diesel::SqliteConnection);
 
 #[derive(Serialize)]
 struct TemplateContext<'context> {
@@ -41,6 +47,7 @@ fn main() {
 
     rocket::ignite()
         .mount("/", routes![index, favicon])
+        .attach(DbConn::fairing())
         .attach(Template::fairing())
         .attach(StaticResponse::fairing(|resources| {
             static_resources_initialize!(resources, "favicon", "static/lego-brick.png");

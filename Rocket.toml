@@ -1,6 +1,9 @@
 [global]
 template_dir = "templates/"
 
+[global.databases]
+sqlite = { url = "database.sqlite" }
+
 [development]
 address = "localhost"
 
