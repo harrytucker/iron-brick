@@ -3,7 +3,81 @@
 
 * About
 Iron Brick is a re-write of the [[https://github.com/harrytucker/lego-scoreboard/][lego-scoreboard]] Flask application using the [[https://www.rust-lang.org/][Rust programming language]]. This is a learning exercise for myself, and an attempt to improve on the previous version of this application, where Rust's typesystem and other features can be exploited to make a robust application.
+The project provides two binaries, =cli=, and =web=. These allow you to run a web server for the scoreboard, and use the cli application to manage the missions you want to run.
 
+* Missions
+The previous lego-scoreboard software used a JSON format to manage missions available for a given tournament. This worked well, so Iron Brick still supports JSON, providing a more concise format with stronger typing. In addition, Iron Brick also supports (and uses by default) YAML files. These can be swapped out at will, but you will at least find YAML easier to type by hand if you need to:
+** YAML example
+#+BEGIN_SRC yaml
+---
+missions:
+  - title: M01 - Elevated Places
+    fields:
+      - CheckboxField:
+          text: "The Robot needs to be supported by the bridge:"
+          value: 20
+      - RadioField:
+          text: Flag point only available if the bridge portion is successful!
+          choices:
+            - text: No flags raised
+              value: 0
+            - text: 1 flag raised
+              value: 15
+            - text: 2 flags raised
+              value: 30
+      - StringField: "It is okay and expected for Robots to collide while trying to earn flag points. When clearly only one robot holds a raised flag, only that Robot scores for that flag."
+  - title: M02 - Crane (score all the apply)
+    fields:
+      - CheckboxField:
+          text: "If the Hooked Blue Unit is:"
+          value: 20
+      - CheckboxField:
+          text: Independent and Supported by another Blue unit
+          value: 15
+      - CheckboxField:
+          text: and Level 1 is completely in the Blue Circle
+          value: 15
+#+END_SRC
+** JSON example
+#+BEGIN_SRC json
+{
+  "missions": [
+    {
+      "title": "M01 - Elevated Places",
+      "fields": [
+        {
+          "CheckboxField": {
+            "text": "The Robot needs to be supported by the bridge:",
+            "value": 20
+          }
+        },
+        {
+          "RadioField": {
+            "text": "Flag point only available if the bridge portion is successful!",
+            "choices": [
+              {
+                "text": "No flags raised",
+                "value": 0
+              },
+              {
+                "text": "1 flag raised",
+                "value": 15
+              },
+              {
+                "text": "2 flags raised",
+                "value": 30
+              }
+            ]
+          }
+        },
+        {
+          "StringField": "It is okay and expected for Robots to collide while trying to earn flag points. When clearly only one robot holds a raised flag, only that Robot scores for that flag."
+        }
+      ]
+    }
+  ]
+}
+#+END_SRC
 * Some Technical Details
 + [[https://rocket.rs][Rocket]] provides the web layer of things
 + [[https://serde.rs/][Serde]] is a very powerful serialisation framework that is used to handle missions like the previous application
@@ -13,12 +87,11 @@ Rocket 0.4.5 still doesn't compile on stable Rust just yet, so make sure you're 
 #+BEGIN_SRC bash
 rustup toolchain install nightly
 #+END_SRC
-Then simply compile the dependencies from `Cargo.toml` as normal:
+You should now be able to build the project, make sure you specify one of the available binaries:
 #+BEGIN_SRC bash
-cargo build
-#+END_SRC
+# builds the cli management app
+cargo build --bin cli
 
-* In Progress [0%]
-** STRT Implement Web Interface
-** TODO Implement CLI for management
-** TODO Import and export of JSON/YAML
+# builds the web server
+cargo build --bin web
+#+END_SRC
