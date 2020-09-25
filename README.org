@@ -83,9 +83,10 @@ missions:
 + [[https://serde.rs/][Serde]] is a very powerful serialisation framework that is used to handle missions like the previous application
 
 * Requirements
-Rocket 0.4.5 still doesn't compile on stable Rust just yet, so make sure you're running nightly:
+Rocket 0.4.5 still doesn't compile on stable Rust just yet, so make sure have nightly installed, and either set it as your default toolchain or override it for the iron-brick project directory.
 #+BEGIN_SRC bash
 rustup toolchain install nightly
+rustup override set nightly
 #+END_SRC
 You should now be able to build the project, make sure you specify one of the available binaries:
 #+BEGIN_SRC bash
