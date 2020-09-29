@@ -10,7 +10,7 @@ use rocket_contrib::database;
 use rocket_contrib::{databases::diesel, templates::Template};
 use rocket_include_static_resources::StaticResponse;
 
-use lib::models::*;
+use lib::{models::*, users::get_users};
 use quicli::prelude::*;
 use rocket::State;
 
@@ -30,6 +30,17 @@ fn favicon() -> StaticResponse {
     static_response!("favicon")
 }
 
+/// The test function is an example of how to get items from the database
+#[get("/test")]
+fn test(db: DbConn) -> String {
+    let results = match get_users(&db) {
+        Ok(users) => users,
+        Err(err) => panic!(err),
+    };
+
+    format!("First user in db: {}", results[0].username)
+}
+
 #[get("/")]
 fn index(missions: State<MissionForm>) -> Template {
     Template::render(
@@ -46,7 +57,7 @@ fn main() {
     let missions_str = lib::yaml_to_missions(&content).unwrap();
 
     rocket::ignite()
-        .mount("/", routes![index, favicon])
+        .mount("/", routes![index, favicon, test])
         .attach(DbConn::fairing())
         .attach(Template::fairing())
         .attach(StaticResponse::fairing(|resources| {

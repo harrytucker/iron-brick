@@ -1,4 +1,10 @@
 pub mod models;
+pub mod schema;
+pub mod users;
+
+#[macro_use]
+extern crate diesel;
+
 use models::*;
 
 pub fn json_to_missions(json: &str) -> Result<MissionForm, serde_json::Error> {
