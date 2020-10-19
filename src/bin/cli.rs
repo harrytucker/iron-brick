@@ -90,26 +90,24 @@ fn read_missions(
 
 /// Borrows a MissionForm and returns the maximum possible score for that MissionForm
 fn calculate_max_score(mission_form: &MissionForm) -> i32 {
-    let mut max_score = 0;
-
-    for mission in &mission_form.missions {
-        for field in &mission.fields {
-            match field {
-                StringField(_) => { /*do nothing*/ }
-                CheckboxField(field) => max_score = max_score + field.value,
-                SelectField(field) => {
-                    for selection in &field.choices {
-                        max_score = max_score + selection.value;
+    mission_form
+        .missions
+        .iter()
+        .map(|mission| {
+            mission
+                .fields
+                .iter()
+                .map(|field| match field {
+                    StringField(_) => 0,
+                    CheckboxField(field) => field.value,
+                    SelectField(field) => {
+                        field.choices.iter().map(|choice| choice.value).sum::<i32>()
                     }
-                }
-                RadioField(field) => {
-                    for selection in &field.choices {
-                        max_score = max_score + selection.value;
+                    RadioField(field) => {
+                        field.choices.iter().map(|choice| choice.value).sum::<i32>()
                     }
-                }
-            }
-        }
-    }
-
-    max_score
+                })
+                .sum::<i32>()
+        })
+        .sum()
 }
